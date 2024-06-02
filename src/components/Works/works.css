@@ -1,0 +1,68 @@
+#works{
+    overflow: hidden;
+    width: 100vw;
+    max-width: 65rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin: 0 auto;
+}
+
+.worksTitle{
+    font-size: 3rem;
+    font-weight: 600;
+    padding: 3rem;
+    margin-bottom: 1rem;
+}
+
+.worksDesc{
+    font-weight: 400;
+    font-size: 1rem;
+    max-width: 61rem;
+    padding: 0 2rem;
+}
+
+.worksBars{
+    margin: 1.5rem;
+    width: 100vw;
+    max-width: 80%;
+    text-align: left;
+}
+
+.worksBar{
+    display: flex;
+    margin: 1rem;
+    padding: 1.5rem 2rem;
+    border-radius: 0.5rem;
+    background: rgb(211, 186, 235);
+}
+
+.worksBarImg{
+    object-fit:contain;
+    height: 6rem;
+    width: 6rem;
+}
+
+.worksBarText{
+    padding: 1rem;
+    font-size: 0.9rem;
+    font-weight: 300;
+}
+
+@media screen and (max-width:720px) {
+    .worksBarImg{
+        height: 5rem;
+        width: 5rem;
+    }
+   .worksBarText>p{ 
+    font-size: 2vw;
+    
+   }
+   .worksBarText>h2{
+    font-size: 4vw;
+    
+   }
+
+}

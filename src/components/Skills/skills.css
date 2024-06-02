@@ -1,7 +1,7 @@
 #skills{
     overflow: hidden;
     width: 100vw;
-    max-width: 65rem;
+    max-width: 75rem;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -29,6 +29,7 @@
     width: 100vw;
     max-width: 80%;
     text-align: left;
+    
 }
 
 .skillBar{
@@ -36,13 +37,15 @@
     margin: 1rem;
     padding: 1.5rem 2rem;
     border-radius: 0.5rem;
-    background: rgb(211, 186, 235);
+    background-color: #6851CB;
+    
 }
 
 .skillBarImg{
     object-fit:contain;
     height: 6rem;
     width: 6rem;
+    
 }
 
 .skillBarText{

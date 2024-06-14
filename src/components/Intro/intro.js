@@ -1,7 +1,6 @@
 import React from "react";
 import './intro.css';
-import bg from '../../assets/profile.png';
-import { Link } from 'react-scroll';
+import bg from '../../assets/profile5.png';
 
 import Github from '../../assets/github.png';
 import Linkedin from '../../assets/linkedin.png';
@@ -16,8 +15,11 @@ const Intro = () =>{
                 <p className="introPara">Graduate with a degree in Science Computer and <br/> a strong
                 foundation in software development. </p>
                 <a href={Resume} download><button className="btn">Download CV</button></a>
-                <Link><button className="btn1"><img src={Github} alt="github" className="btnImg1" /></button>
-                <button className="btn1"><img src={Linkedin} alt="linkedin" className="btnImg1" /></button></Link>
+                <row>
+                <a href="https://github.com/NurDiyanaAziz"  target="_blank" rel="noopener noreferrer"><button className="btn1"><img src={Github} alt="github" className="btnImg1" /></button></a>
+                <a href="https://www.linkedin.com/in/nurdiyanaabaziz/"  target="_blank" rel="noopener noreferrer"><button className="btn1"><img src={Linkedin} alt="linkedin" className="btnImg1" /></button></a>
+                </row>
+                
                
 
             </div>

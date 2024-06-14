@@ -13,8 +13,9 @@ const Toggle = () => {
   };
   return (
     <div className="toggle" onClick={handleClick}>
-      <FaRegMoon />
       <FaRegSun />
+      <FaRegMoon />
+      
       
       <div
         className="t-button"

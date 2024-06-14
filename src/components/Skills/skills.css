@@ -22,6 +22,7 @@
     font-size: 1rem;
     max-width: 61rem;
     padding: 0 2rem;
+    text-align: justify;
 }
 
 .skillBars{
@@ -51,7 +52,8 @@
 .skillBarText{
     padding: 1rem;
     font-size: 0.9rem;
-    font-weight: 300;
+    font-weight: 400;
+    text-align: justify;
 }
 
 @media screen and (max-width:720px) {

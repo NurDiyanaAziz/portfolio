@@ -10,7 +10,11 @@ const Footer = () => {
       
       <div className="f-content">
         <p>
-        <span>nurdiyanaabaziz26@gmail.com </span>
+        <span>@2024</span>
+        </p>
+        <p>
+          
+        <span>nurdiyanaabaziz26@gmail.com</span>
         </p>
         <p>
         <span> <Link><button className="btn2"><img src={Github} alt="github" className="btnImg2" /></button>

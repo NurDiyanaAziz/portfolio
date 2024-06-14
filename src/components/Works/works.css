@@ -1,13 +1,16 @@
 #works{
     overflow: hidden;
-    width: 100vw;
-    max-width: 65rem;
+    width: 100%;
+   height: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     text-align: center;
     margin: 0 auto;
+    padding-bottom: 5%;
+    padding-left: 15%;
+    padding-right: 15%;
 }
 
 .worksTitle{
@@ -32,11 +35,15 @@
 }
 
 .worksBar{
-    display: flex;
+    height: 100%;
+    width: 100%;
+    display:flexbox;
     margin: 1rem;
     padding: 1.5rem 2rem;
+   
     border-radius: 0.5rem;
-    background: rgb(211, 186, 235);
+    background: #6851CB;
+    padding-bottom: 5%;
 }
 
 .worksBarImg{
@@ -64,5 +71,46 @@
     font-size: 4vw;
     
    }
+
+}
+/* src/App.css */
+.slick-prev:before,
+.slick-next:before {
+  color: black;  /* Change arrow color */
+}
+
+.slick-dots li button:before {
+  color: black;  /* Change dot color */
+}
+
+.slick-slide img {
+  display: block;
+  margin: auto;
+  max-height: 500px;  /* Adjust image height */
+  width: auto;
+}
+
+#intro{
+    height: calc(100vh - 4rem);
+    width: 120vw;
+    max-width: 90rem;
+    margin: 0 auto;
+    overflow: hidden;
+    position: sticky;
+
+    
+}
+
+.introContent{
+    height: 100vh;
+    width: 100vw;
+    padding: 2rem;
+    font-size: 3rem;
+    font-weight: 700;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    
+
 
 }

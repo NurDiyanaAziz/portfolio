@@ -60,7 +60,7 @@
     font-weight: bold;
     background: linear-gradient(45deg, #961d77, #c328d8, #b47dc5, #6851CB);
     background-size: 300% 300%;
-    -webkit-background-clip: text;
+    background-clip: text;
     color: transparent;
     animation: gradientShift 5s infinite;
 }

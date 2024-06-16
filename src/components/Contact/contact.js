@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useRef} from "react";
 import emailjs from "@emailjs/browser";
 import styled from "styled-components";
 import './contact.css';
@@ -8,8 +8,7 @@ import "react-toastify/dist/ReactToastify.css";
 // npm i @emailjs/browser
 
 const Contact = () => {
-  const [successMessage, setSuccessMessage] = useState('');
-
+  
   const form = useRef();
 
   const sendEmail = (e) => {

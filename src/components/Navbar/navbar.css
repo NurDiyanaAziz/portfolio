@@ -15,6 +15,7 @@
     z-index: 3;
 }
 .logoleft{
+    
     flex: 1;
     align-items: center;
     display: flex;
@@ -22,14 +23,21 @@
 }
 
 .logo{
+    
     object-fit: cover;
     height: 4rem;
     width: 5rem;
+}
+.logo:hover{
+    
+    cursor: pointer;
 }
 
 .desktopMenuListItem{
     margin: 1rem;
     cursor: pointer;
+    border: none;
+    font-size: medium;
 }
 
 .desktopMenuListItem:hover{
@@ -61,4 +69,6 @@
     color: rgb(255, 255, 255);
     cursor: pointer;
 }
-
+html {
+    scroll-behavior: smooth;
+  }

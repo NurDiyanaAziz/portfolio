@@ -14,7 +14,9 @@ const Works = () =>{
    
     return(
         <section id='works'>
-            <h2 className='worksTitle'>My Portfolio</h2>
+            <h2 className='bounce-text'>My Portfolio</h2>
+            <span className='workDesc'>Here's a selection of project that I've worked on. Most of them were built completely from scratch and some redesign of old website. </span>
+        
             <span ></span>
             
             <div className='worksBar'>

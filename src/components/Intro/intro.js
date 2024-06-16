@@ -11,7 +11,7 @@ const Intro = () =>{
         <section id='intro' >
             <div className="introContent">
                 <span className="hello">Hello, </span>
-                <span className="introText">I'm <span className="introName">Diyana</span> <br/> Software Developer</span>
+                <span className="introText">I'm <span className="gradient-text">Diyana</span> <br/> Software Developer</span>
                 <p className="introPara">Graduate with a degree in Science Computer and <br/> a strong
                 foundation in software development. </p>
                 <a href={Resume} download><button className="btn">Download CV</button></a>

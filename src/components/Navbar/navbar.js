@@ -7,25 +7,28 @@ import Toggle from "../Toggle/toggle";
 
 const Navbar = () =>{
     return(
+       
         <nav className="navbar">
             <div className="logoleft">
-            <img src={logo} alt="" className='logo'/>
+            <Link to="intro" spy={true} smooth={true} offset={-199} duration={500}><img src={logo} alt="" className='logo' /></Link>
             <Toggle />
             </div>
             
             <div className="desktopMenu">
-                <Link className='desktopMenuListItem'>Home</Link>
-                <Link className='desktopMenuListItem'>About</Link>
-                <Link className='desktopMenuListItem'>Portfolio</Link>
+                <Link to="intro" spy={true} smooth={true} offset={-199} duration={500} className='desktopMenuListItem'>Home</Link>
+                <Link to="skills" spy={true} smooth={true} offset={10} duration={500} className='desktopMenuListItem'>About</Link>
+                <Link to="works" spy={true} smooth={true} offset={-90} duration={500} className='desktopMenuListItem'>Portfolio</Link>
                
 
             </div>
-            <button className='desktopMenuBtn'>
+            <Link to="contact" spy={true} smooth={true} offset={-90} duration={500}><button className='desktopMenuBtn'>
                 <img src={contactImg} alt='' className='desktopMenuImg'/> Contact Me
             </button>
+            </Link>
             
 
         </nav>
+       
     )
 }
 

@@ -57,3 +57,20 @@
 
 .span-with-space { 
     margin-right: 30px; /* Adjust as needed */ }
+
+.textemail a{
+      color: black;
+      text-decoration: none;
+    }
+    .textemails{
+      color: white;
+      text-decoration: none;
+    }
+
+@media (prefers-color-scheme: dark) {
+      .textemail a {
+        color: white; /* Color for dark mode */
+      }
+    }
+    
+    

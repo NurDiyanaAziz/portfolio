@@ -8,7 +8,7 @@ import des from'../../assets/design.png';
 const Skills = () =>{
     return(
        <section id='skills'>
-        <span className='skillTitle'>What I do </span>
+        <span className='bounce-text'>What I do </span>
         <span className='skillDesc'>I graduated with a degree in Computer Science, equipped with a solid background in software development. I thrive in collaborative team projects and am dedicated to continuous learning and embracing new technologies. I am enthusiastic about applying my academic knowledge and coding passion in a dynamic professional setting. Currently seeking an entry-level position in software development to actively contribute to cutting-edge projects and enhance my technical skills.</span>
         <div className="skillBars">
             <div className="skillBar">

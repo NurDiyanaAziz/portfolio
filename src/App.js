@@ -20,6 +20,7 @@ function App() {
         <Intro/>
         <Skills/>
         <Works/>
+        <Contact/>
         <Footer/>
     </div>
   );

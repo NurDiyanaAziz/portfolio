@@ -1,27 +1,34 @@
-/*import React, { useContext, useRef, useState } from "react";
-import "./contact.css";
+import React, { useRef, useState } from "react";
 import emailjs from "@emailjs/browser";
-import { themeContext } from "../../Context";
+import styled from "styled-components";
+import './contact.css';
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
+// npm i @emailjs/browser
+
 const Contact = () => {
-  const theme = useContext(themeContext);
-  const darkMode = theme.state.darkMode;
+  const [successMessage, setSuccessMessage] = useState('');
+
   const form = useRef();
-  const [done, setDone] = useState(false)
+
   const sendEmail = (e) => {
     e.preventDefault();
 
     emailjs
       .sendForm(
-        "service_lwy39od",
+        "service_oy3d7wu",
         "template_0hcnbis",
         form.current,
-        "zgftdKkv6ViFF8ZVZ"
+        "kchgM4GjLim5rYEac"
       )
       .then(
         (result) => {
           console.log(result.text);
-          setDone(true);
-          form.reset();
+          console.log("message sent");
+          e.target.reset();
+          
+          toast.success("Hey! Thank you for contacting me");
         },
         (error) => {
           console.log(error.text);
@@ -30,36 +37,87 @@ const Contact = () => {
   };
 
   return (
-    <div className="contact-form" id="contact">
-      {/* left side copy and paste from work section *//*}
-      <div className="w-left">
-        <div className="awesome">
-          {/* darkMode *//*}
-          <span style={{color: darkMode?'white': ''}}>Get in Touch</span>
-          <span>Contact me</span>
-          <div
-            className="blur s-blur1"
-            style={{ background: "#ABF1FF94" }}
-          ></div>
-        </div>
-      </div>
-      {/* right side form *//*}
-      <div className="c-right">
-        <form ref={form} onSubmit={sendEmail}>
-          <input type="text" name="user_name" className="user"  placeholder="Name"/>
-          <input type="email" name="user_email" className="user" placeholder="Email"/>
-          <textarea name="message" className="user" placeholder="Message"/>
-          <input type="submit" value="Send" className="button"/>
-          <span>{done && "Thanks for Contacting me"}</span>
-          <div
-            className="blur c-blur1"
-            style={{ background: "#6851CB" }}
-          ></div>
-        </form>
-      </div>
+    <section id='contact'>
+      
+      <div className="contactBars">
+        
+    <div className="contactBox">
+    <span className="title">Get in Touch</span>
+<StyledContactForm>
+      <form ref={form} onSubmit={sendEmail}>
+        <label>Name</label>
+        <input type="text" name="user_name" />
+        <label>Email</label>
+        <input type="email" name="user_email" />
+        <label>Message</label>
+        <textarea name="message" />
+        <input type="submit" value="Send" />
+      </form>
+      <ToastContainer position="top-right" />
+    </StyledContactForm>
     </div>
+    </div>
+    </section>
+    
   );
 };
 
 export default Contact;
-*/
+
+// Styles
+const StyledContactForm = styled.div`
+  width: 400px;
+
+  form {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    width: 100%;
+    font-size: 16px;
+
+    input {
+      width: 100%;
+      height: 35px;
+      padding: 7px;
+      outline: none;
+      border-radius: 5px;
+      border: 1px solid rgb(220, 220, 220);
+
+      &:focus {
+        border: 2px solid rgba(0, 206, 158, 1);
+      }
+    }
+
+    textarea {
+      max-width: 100%;
+      min-width: 100%;
+      width: 100%;
+      max-height: 100px;
+      min-height: 100px;
+      padding: 7px;
+      outline: none;
+      border-radius: 5px;
+      border: 1px solid rgb(220, 220, 220);
+
+      &:focus {
+        border: 2px solid rgba(0, 206, 158, 1);
+      }
+    }
+
+    label {
+      margin-top: 1rem;
+    }
+
+    input[type="submit"] {
+      margin-top: 2rem;
+      cursor: pointer;
+      background: white;
+      
+      border: none;
+    }
+      input:hover{
+      background: #9681f7;
+
+      }
+  }
+`;

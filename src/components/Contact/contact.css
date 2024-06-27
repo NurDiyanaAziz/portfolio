@@ -1,7 +1,7 @@
 #contact{
     overflow: hidden;
     
-    
+    padding: 0rem;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -13,7 +13,7 @@
  
 }
 .contactBars{
-    margin: 1.5rem;
+    
     width: 120vw;
    
     text-align: left;
@@ -23,7 +23,6 @@
 
 .contactBox{
     display: flex;
-    margin: 1rem;
     padding: 1.5rem 2rem;
     border-radius: 0.5rem;
     background-color: #6851CB;

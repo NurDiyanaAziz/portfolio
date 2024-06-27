@@ -1,0 +1,14 @@
+.toggles-button {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1.5rem;
+    cursor: pointer;
+    display: none;
+}
+
+@media (max-width: 768px) {
+    .toggles-button {
+        display: block;
+    }
+}

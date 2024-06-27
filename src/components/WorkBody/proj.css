@@ -54,4 +54,59 @@
 .textImage{
     padding-bottom: 15px;
 }
+@media screen and (max-width:480px) {
 
+  .sect{
+    display: flex;
+  flex-wrap: wrap;
+  gap: 100%;
+}
+.imgslide{
+    
+  width: 100%;
+  padding-bottom: 15%;
+}
+  .workDesc{
+      font-weight: 400;
+      font-size: 1rem;
+   
+      padding: 0 2rem;
+      text-align: justify;
+      
+      
+  }
+  .worksBar{
+      height: 100%;
+      width: 100%;
+      display:block;
+      margin: 1rem;
+      padding: 1.5rem 2rem;
+     
+      border-radius: 0.5rem;
+      background: #6851CB;
+      padding-bottom: 5%;
+  }
+
+  .textTitle{
+    
+    padding-bottom: 15px;
+    font-size: medium;
+}
+.text{
+    padding-bottom: 2%;
+    padding-right:3% ;
+    font-size: small;
+}
+.list1{
+  font-size: smaller;
+  font-weight: 400;
+}
+
+.slick-dots{
+
+  height: 2rem;
+  
+}
+  
+
+}

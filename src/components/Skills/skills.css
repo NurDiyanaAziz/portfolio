@@ -95,3 +95,30 @@
    }
 
 }
+@media screen and (max-width:480px) {
+
+    .skillBars{
+        margin: 1.5rem;
+        width: 100vw;
+        max-width: 75rem;
+        text-align: left;
+        
+    }
+    
+    .skillBarImg{
+        height: 3rem;
+        width: 3rem;
+    }
+   .skillBarText>p{ 
+    font-size: 3vw;
+    font-weight: 300;
+    text-align:justify;
+    
+    
+   }
+   .skillBarText>h2{
+    font-size: 4vw;
+    
+   }
+
+}

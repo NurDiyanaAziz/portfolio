@@ -33,7 +33,7 @@ const Proj3 = () => {
         <span className='text'>Developing an e-commerce website for selling men's clothing involves conducting market research to understand the target audience and competition, selecting a suitable platform, designing an attractive and user-friendly interface.</span>
         <span className='text'>Creating a comprehensive product catalog with easy navigation, integrating secure payment gateways such as PayPal, implementing inventory management systems, setting up shipping options, ensuring website security and compliance with data protection regulations.</span>
         <span className='text'>Technologies Used:</span>
-       <ul>
+       <ul className='list1'>
        <li>Spring Boot</li>
         <li>Angular Framework</li>
         <li>Java</li>

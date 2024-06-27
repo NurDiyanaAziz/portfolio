@@ -1,10 +1,10 @@
-.navbar{
-   background-color: #a695f3dc;
+/* Navbar base styles */
+.navbar {
+    background-color: #a695f3dc;
     border: none;
-    border-radius: 0rem 0rem 1rem 1rem;
+    border-radius: 0;
     height: 5rem;
-    width: 100vw;
-    max-width: 75rem;
+    width: 90%;
     margin: 0 auto;
     padding: 1rem 2rem;
     display: flex;
@@ -14,39 +14,46 @@
     top: 0;
     z-index: 3;
 }
-.logoleft{
-    
+
+/* Logo and toggle container */
+.logoleft {
     flex: 1;
     align-items: center;
     display: flex;
     gap: 2rem;
 }
 
-.logo{
-    
+.logo {
     object-fit: cover;
     height: 4rem;
     width: 5rem;
 }
-.logo:hover{
-    
+
+.logo:hover {
     cursor: pointer;
 }
 
-.desktopMenuListItem{
+/* Desktop menu container */
+.desktopMenu {
+    display: flex;
+    align-items: center;
+}
+
+/* Desktop menu items */
+.desktopMenuListItem {
     margin: 1rem;
     cursor: pointer;
     border: none;
     font-size: medium;
 }
 
-.desktopMenuListItem:hover{
-   
+.desktopMenuListItem:hover {
     padding-bottom: 0.5rem;
     border-bottom: 3px solid #6851CB;
 }
 
-.desktopMenuBtn{
+/* Contact button */
+.desktopMenuBtn {
     background: #6851CB;
     color: white;
     border: none;
@@ -57,18 +64,87 @@
     border-radius: 2rem;
 }
 
-.desktopMenuImg{
+.desktopMenuImg {
     object-fit: cover;
     height: 2rem;
     width: 2rem;
     margin: 0.7rem;
 }
 
-.desktopMenuBtn:hover{
-    background:#9681f7;
+.desktopMenuBtn:hover {
+    background: #9681f7;
     color: rgb(255, 255, 255);
     cursor: pointer;
 }
+
+/* Hamburger menu button */
+.menuButton {
+    display: none;
+    font-size: 2rem;
+    cursor: pointer;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+    .navbar {
+        
+        border-radius: 0;
+       
+    }
+    .logo {
+        object-fit: cover;
+        height: 2rem;
+        width: 4rem;
+    }
+    .desktopMenu {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 5rem;
+        left: 0;
+        width: 100%;
+        background-color: #a695f3dc;
+        z-index: 3;
+        
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+
+    .desktopMenu.open {
+        display: flex;
+        opacity: 1;
+        transform: translateY(0);
+        animation: slideDown 0.3s ease-in-out forwards;
+    }
+
+    .menuButton {
+        display: block;
+    }
+
+    /* Hide the contact button on larger screens */
+    .desktopMenuBtn {
+        display: none;
+    }
+
+    /* Show the contact button when menu is open on smaller screens */
+    .desktopMenu.open .desktopMenuBtn {
+        display: flex;
+    }
+}
+
+/* Keyframe animation for menu slide down */
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
 html {
     scroll-behavior: smooth;
-  }
+}

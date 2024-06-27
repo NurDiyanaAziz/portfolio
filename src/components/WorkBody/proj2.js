@@ -34,7 +34,7 @@ const Proj2 = () => {
         <span className='text'>The project aims to create a self-monitoring app for lipid levels, including treatment and recommendations for diet and exercise. It also involves developing a recommender system for diet and exercise, evaluating system efficiency through testing.</span>
         
         <span className='text'>Technologies Used:</span>
-       <ul>
+       <ul className='list1'>
        <li>Flutter Framework</li>
         <li>Dart</li>
         <li>Firebase Database</li>

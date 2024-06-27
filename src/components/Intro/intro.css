@@ -1,44 +1,39 @@
-#intro{
-    height: auto;
+#intro {
+    height: calc(100vh - 4rem);
     width: 120vw;
     max-width: 90rem;
     margin: 0 auto;
     overflow: hidden;
     position: sticky;
-    
-
-    
 }
-.bg{
+
+.bg {
     position: absolute;
     top: 1rem;
     right: 0;
     z-index: -1;
     object-fit: cover;
-    height: 100vh;
-    
-   
+    height: 90vh;
 }
-.introContent{
+
+.introContent {
     height: 100vh;
-    width: 100vw;
+    width: 100%;
     padding: 2rem;
     font-size: 3rem;
     font-weight: 700;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    
-
-
 }
-.hello{
+
+.hello {
     font-size: 1.75rem;
     font-weight: 100;
-
 }
-.introName{
-   color: #6851CB; 
+
+.introName {
+    color: #6851CB;
 }
 
 /* Define the keyframes for the gradient animation */
@@ -56,7 +51,6 @@
 
 /* Apply the gradient animation to the text element */
 .gradient-text {
-    
     font-weight: bold;
     background: linear-gradient(45deg, #961d77, #c328d8, #b47dc5, #6851CB);
     background-size: 300% 300%;
@@ -64,12 +58,14 @@
     color: transparent;
     animation: gradientShift 5s infinite;
 }
-.introPara{
-    font-size:medium ;
+
+.introPara {
+    font-size: medium;
     font-weight: 300;
     letter-spacing: 1px;
 }
-.btn{
+
+.btn {
     text-align: center;
     background: #6851CB;
     margin: 1rem 0;
@@ -78,61 +74,78 @@
     border-radius: 2rem;
     color: white;
 }
-.btn:hover{
+
+.btn:hover {
     background: #9681f7;
     cursor: pointer;
 }
-.btnImg{
+
+.btnImg {
     object-fit: cover;
     margin: 1 0.5rem;
     height: 1.7rem;
 }
-.btn1{
-    
+
+.btn1 {
     margin: 1rem 0;
     padding: 0.75rem 2.5rem 0.75rem 1.2rem;
     border: none;
-    
 }
-.btnImg1{
-    
+
+.btnImg1 {
     margin: 0 0.25rem;
     height: 1rem;
     transform: scale(5);
 }
-.btnImg1:hover{
-    
+
+.btnImg1:hover {
     cursor: pointer;
     filter: drop-shadow(2px 2px 2px #9681f7);
-   
-    
 }
 
-
-@media screen and (max-width:840px) {
-    .bg{
+@media screen and (max-width: 768px) {
+    .bg {
         right: -20vw;
-        
+        height: 60%;
+        width: auto; /* Ensure image responsiveness */
+        max-width: 100%; /* Ensure image doesn't exceed container */
     }
-    .introContent{
-        
-       font-size: 10vw;
+
+    .introContent {
+        font-size: 7vw;
     }
-    .hello{
+
+    .hello {
         font-size: 4.5vw;
     }
-
-  
-    
-    
 }
-@media screen and (max-width:480px) {
-    .bg{
-        right: -50vw;
-        
+
+@media screen and (max-width: 480px) {
+    #intro {
+        overflow: hidden;
+    width: auto;
+    max-width: 75rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: left;
+    margin: 0 auto;
+    
     }
 
-  
-    
-    
+    .bg {
+        display: none;
+        right:16%;
+        height: 80%; /* Adjust height as needed for mobile */
+        width: 100%; /* Ensure image responsiveness */
+        max-width: 75rem ; /* Ensure image doesn't exceed container */
+    }
+
+    .introContent {
+        font-size: 8vw;
+    }
+
+    .hello {
+        font-size: 5vw;
+    }
 }

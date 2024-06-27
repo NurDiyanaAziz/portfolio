@@ -1,9 +1,10 @@
 .footer {
     display: flex;
     align-items: center;
-    margin: -0.5rem -3.5rem;
+  
     position: relative;
-    margin-top: -7rem;
+    
+    background-color: #6851CB;
     
   }
   .f-content {
@@ -14,9 +15,9 @@
     justify-content: center;
     
     width: 100%;
-    margin-top: 4rem;
-    gap: 4rem;
-    background-color: #6851CB;
+   
+    gap: 3rem;
+    
     
   }
   .f-icons {
@@ -28,15 +29,49 @@
   }
   
   @media screen and (max-width: 480px){
-    .f-content{
-      transform: scale(.5);
+    .footer {
+      display:block;
+      align-items: center;
+     
+      
+      width: 100%;
+      max-width: 75rem;
+      
     }
+
+    .f-content {
+    
+      position:relative;
+      display:grid;
+      align-items: center;
+      justify-content: center;
+      padding-top: 7%;
+      width: 100%;
+     
+      gap: 0rem;
+      
+      
+    }
+
+    .icon2{
+      justify-content: space-between;
+    }
+
+    
+
+    
+
+  
+  }
+
+  .icon2{
+    justify-content: space-between;
   }
 
   .btn2{
     
     margin: 1rem 0;
-    padding: 0.5rem 2.5rem 0.75rem 1.2rem;
+    padding: 0.5rem 0rem 0.75rem 1.2rem;
     border: none;
     
 }

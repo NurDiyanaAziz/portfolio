@@ -33,7 +33,7 @@ const Proj1 = () => {
         <span className='text'>Develop a mobile application tailored specifically for guardians associated with the 'Cilik Al Fateh' website, focusing on key functionalities to streamline payments and access to academic details.</span>
         <span className='text'>This mobile app aims to provide a user-friendly interface to enhance the overall experience for guardians, making it easier to manage their child's educational journey.</span>
         <span className='text'>Technologies Used:</span>
-       <ul>
+       <ul className='list1'>
        <li>Flutter Framework</li>
         <li>Dart</li>
         <li>Firebase Database</li>

@@ -4,7 +4,7 @@ import bg from '../../assets/profile5.png';
 
 import Github from '../../assets/github.png';
 import Linkedin from '../../assets/linkedin.png';
-import Resume from '../../assets/NUR DIYANA BINTI AB AZIZ_CV.pdf';
+import Resume from '../../assets/Nur Diyana Ab Aziz_2024_Resume.pdf';
 
 const Intro = () =>{
     return(

@@ -1,150 +1,155 @@
-/* Navbar base styles */
+:root {
+    --bg-nav: rgba(15, 23, 36, 0.8); /* Match your deep navy with transparency */
+    --accent: #7c5cff;
+    --muted: #9aa7bf;
+}
+
 .navbar {
-    background-color: #a695f3dc;
-    border: none;
-    border-radius: 0;
-    height: 5rem;
-    width: 90%;
-    margin: 0 auto;
-    padding: 1rem 2rem;
+    position: fixed; /* Makes it follow the scroll */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: var(--nav-height);
     display: flex;
     align-items: center;
     justify-content: space-between;
-    position: sticky;
-    top: 0;
-    z-index: 3;
+    padding: 0 10%;
+    background: var(--bg-color); /* Matches theme */
+    backdrop-filter: blur(10px);
+    z-index: 1000;
+    transition: all 0.5s ease;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
 }
 
-/* Logo and toggle container */
+/* Glass effect when scrolling */
+.navbar.scrolled {
+    background: var(--bg-nav);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    height: 4.5rem;
+}
+
 .logoleft {
-    flex: 1;
-    align-items: center;
     display: flex;
-    gap: 2rem;
+    align-items: center;
+    gap: 1.5rem;
 }
 
 .logo {
-    object-fit: cover;
-    height: 4rem;
-    width: 5rem;
+    height: 2.5rem;
+    width: auto;
+    transition: transform 0.3s ease;
 }
 
-.logo:hover {
-    cursor: pointer;
-}
-
-/* Desktop menu container */
+.logo:hover { transform: scale(1.1); }
 .desktopMenu {
     display: flex;
     align-items: center;
+    justify-content: flex-end;
+    flex: 1; /* Pushes the menu to the right */
 }
 
-/* Desktop menu items */
 .desktopMenuListItem {
+    color: var(--text-color); 
     margin: 1rem;
     cursor: pointer;
-    border: none;
-    font-size: medium;
+    font-size: 1rem;
+    font-weight: 500;
+    transition: color 0.5s ease; /* Smooth color fade */
+    text-decoration: none;
 }
 
 .desktopMenuListItem:hover {
-    padding-bottom: 0.5rem;
-    border-bottom: 3px solid #6851CB;
+    color: var(--accent);
+}
+.desktopMenuListItem:hover, .desktopMenuListItem.active {
+    color: #fff;
 }
 
-/* Contact button */
-.desktopMenuBtn {
-    background: #6851CB;
-    color: white;
+/* Slick underline animation */
+.desktopMenuListItem::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -5px;
+    left: 0;
+    background-color: var(--accent);
+    transition: width 0.3s ease;
+}
+
+.desktopMenuListItem:hover::after, .desktopMenuListItem.active::after {
+    width: 100%;
+}
+
+.contactBtn {
+    background: white;
+    color: black;
+    padding: 0.6rem 1.5rem;
+    border-radius: 8px;
     border: none;
+    font-weight: 600;
+    cursor: pointer;
     display: flex;
     align-items: center;
-    justify-content: center;
-    padding: 0 1rem;
-    border-radius: 2rem;
+    transition: all 0.3s ease;
 }
 
-.desktopMenuImg {
-    object-fit: cover;
-    height: 2rem;
-    width: 2rem;
-    margin: 0.7rem;
+.contactBtn:hover {
+    background: var(--accent);
+    color: white;
+    box-shadow: 0 0 20px rgba(124, 92, 255, 0.4);
 }
 
-.desktopMenuBtn:hover {
-    background: #9681f7;
-    color: rgb(255, 255, 255);
-    cursor: pointer;
-}
-
-/* Hamburger menu button */
-.menuButton {
+/* Animated Hamburger */
+.hamburger {
     display: none;
-    font-size: 2rem;
     cursor: pointer;
 }
 
-/* Responsive styles */
-@media (max-width: 768px) {
-    .navbar {
-        
-        border-radius: 0;
-       
-    }
-    .logo {
-        object-fit: cover;
-        height: 2rem;
-        width: 4rem;
-    }
+.bar {
+    display: block;
+    width: 25px;
+    height: 3px;
+    margin: 5px auto;
+    transition: all 0.3s ease-in-out;
+    background-color: #fff;
+}
+
+@media (max-width: 880px) {
+    .navbar { padding: 0 5%; }
     .desktopMenu {
-        display: none;
+        position: fixed;
+        left: -100%;
+        top: 0;
         flex-direction: column;
-        position: absolute;
-        top: 5rem;
-        left: 0;
+        background-color: var(--bg-nav);
+        backdrop-filter: blur(15px);
         width: 100%;
-        background-color: #a695f3dc;
-        z-index: 3;
-        
-        opacity: 0;
-        transform: translateY(-20px);
+        height: 100vh;
+        justify-content: center;
+        transition: 0.4s;
     }
 
-    .desktopMenu.open {
-        display: flex;
-        opacity: 1;
-        transform: translateY(0);
-        animation: slideDown 0.3s ease-in-out forwards;
-    }
+    .desktopMenu.open { left: 0; }
+    .desktopMenuListItem { margin: 1.5rem 0; font-size: 1.5rem; }
+    .hamburger { display: block; z-index: 101; }
+    .contactBtn { display: none; } /* Hide on mobile for cleaner look */
 
-    .menuButton {
-        display: block;
-    }
-
-    /* Hide the contact button on larger screens */
-    .desktopMenuBtn {
-        display: none;
-    }
-
-    /* Show the contact button when menu is open on smaller screens */
-    .desktopMenu.open .desktopMenuBtn {
-        display: flex;
+    /* Hamburger Animation */
+    .hamburger.active .bar:nth-child(2) { opacity: 0; }
+    .hamburger.active .bar:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+    .hamburger.active .bar:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+}
+@media (max-width: 768px) {
+    .desktopMenu {
+        background-color: var(--bg-color); /* Matches the main app background */
+        transition: transform 0.3s ease, background-color 0.5s ease;
     }
 }
 
-/* Keyframe animation for menu slide down */
-@keyframes slideDown {
-    from {
-        opacity: 0;
-        transform: translateY(-20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-
-html {
-    scroll-behavior: smooth;
+#intro {
+    padding-top: calc(var(--nav-height) + 2rem);
+    flex-direction: row; /* Keep content side-by-side */
 }

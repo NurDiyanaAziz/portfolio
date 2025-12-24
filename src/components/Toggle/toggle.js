@@ -1,25 +1,23 @@
 import React, { useContext } from "react";
 import "./toggle.css";
-import { FaRegMoon } from "react-icons/fa";
-import { FaRegSun } from "react-icons/fa";
+import { FaRegMoon, FaRegSun } from "react-icons/fa";
 import { themeContext } from "../../Context";
 
 const Toggle = () => {
   const theme = useContext(themeContext);
   const darkMode = theme.state.darkMode;
+
   const handleClick = () => {
-    // debugger
     theme.dispatch({ type: "toggle" });
   };
+
   return (
-    <div className="toggle" onClick={handleClick}>
-      <FaRegSun />
-      <FaRegMoon />
-      
-      
+    <div className={`toggle-container ${darkMode ? "dark" : "light"}`} onClick={handleClick}>
+      <FaRegMoon className="t-icon moon" />
+      <FaRegSun className="t-icon sun" />
       <div
         className="t-button"
-        style={darkMode ? { left: "2px" } : { right: "2px" }}
+        style={darkMode ? { left: "2px" } : { left: "28px" }}
       ></div>
     </div>
   );

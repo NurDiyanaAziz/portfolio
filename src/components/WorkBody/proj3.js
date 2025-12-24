@@ -1,64 +1,59 @@
-// src/components/ImageSlider.js
 import './proj.css';
-import React from 'react';
-import Slider from 'react-slick';
+import React, { useState } from 'react';
 
 function importAll(r) {
     let images = {};
-    // eslint-disable-next-line array-callback-return
-    r.keys().map((item, index) => { images[item.replace('./', '')] = r(item); });
+    r.keys().forEach((item) => { images[item.replace('./', '')] = r(item); });
     return images;
-  }
-  const images = importAll(require.context('../../assets/portfolio/winkel', false, /\.(png|jpe?g|svg)$/));
-
+}
+const images = importAll(require.context('../../assets/portfolio/winkel', false, /\.(png|jpe?g|svg)$/));
 
 const Proj3 = () => {
-    const settings = {
-        dots: true,
-        infinite: true,
-        speed: 500,
-        slidesToShow: 1,
-        slidesToScroll: 1,
-        fade:true,
-        autoplay: true,
-        autoplaySpeed: 2500,
-        
-      };
-      
+    const imageKeys = Object.keys(images);
+    const [activeImg, setActiveImg] = useState(imageKeys[0]);
 
-  return (
-    <section className='sect'>
-        <div className='textdesc'>
-        <h2 className='textTitle'>Winkel E-Commerce Website</h2>
-        <span className='text'>Developing an e-commerce website for selling men's clothing involves conducting market research to understand the target audience and competition, selecting a suitable platform, designing an attractive and user-friendly interface.</span>
-        <span className='text'>Creating a comprehensive product catalog with easy navigation, integrating secure payment gateways such as PayPal, implementing inventory management systems, setting up shipping options, ensuring website security and compliance with data protection regulations.</span>
-        <span className='text'>Technologies Used:</span>
-       <ul className='list1'>
-       <li>Spring Boot</li>
-        <li>Angular Framework</li>
-        <li>Java</li>
-        <li>TypeScript</li>
-        <li>MySQL Database</li>
-        <li>PayPal API</li>
-        
-        </ul>
+    return (
+        <section className='sect'> {/* Normal layout to alternate with Proj2 */}
+            <div className='imgslide'>
+                <div className="main-web-display">
+                    <div className="browser-case">
+                        <div className="browser-header">
+                            <span className="dot"></span><span className="dot"></span><span className="dot"></span>
+                        </div>
+                        <img src={images[activeImg]} alt="Website Screen" className="display-img" />
+                    </div>
+                </div>
+                <div className="thumb-grid">
+                    {imageKeys.map((key) => (
+                        <div 
+                            key={key} 
+                            className={`thumb-box ${activeImg === key ? 'active' : ''}`}
+                            onMouseEnter={() => setActiveImg(key)}
+                        >
+                            <img src={images[key]} alt="preview" />
+                        </div>
+                    ))}
+                </div>
+            </div>
 
-        </div>
-        <div className='imgslide'>
-            <p className='textImage'>User Interface</p>
-            
-        <Slider {...settings}>
-      {Object.keys(images).map((key) => (
-      <div key={key}>
-      <img className='img1' src={images[key]} alt={key} />
-      <p>{key.split('.')[0]}</p> {/* Display the file name */}
-    </div>))}
-    </Slider>
-        </div>
-            
-    </section>
-   
-  );
+            <div className='textdesc'>
+                <h2 className='textTitle'>Winkel - E-Commerce</h2>
+                <p className='text'>
+                    Developing an e-commerce website for selling men's clothing involves conducting market research to understand the target audience and competition, selecting a suitable platform, designing an attractive and user-friendly interface.
+Creating a comprehensive product catalog with easy navigation, integrating secure payment gateways such as PayPal, implementing inventory management systems, setting up shipping options, ensuring website security and compliance with data protection regulations.
+                </p>
+                <p style={{color: 'var(--accent)', fontWeight: '600', marginTop: '1rem'}}>Stack:</p>
+                <ul className='list1'>
+                    <li>Java</li>
+                    <li>Spring Boot</li>
+                    <li>Angular Framework</li>
+                    <li>TypeScript</li>
+                    <li>MySQL</li>
+                    <li>PayPal API</li>
+                </ul>
+            </div>
+        </section>
+    );
 };
 
 export default Proj3;

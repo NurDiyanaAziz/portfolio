@@ -1,42 +1,64 @@
+:root {
+    --bg: #030712;         /* Deepest Navy */
+    --card: #0b1220;       /* Card Background */
+    --accent: #7c5cff;     /* Main Violet */
+    --text: #f3f4f6;       /* Near White */
+    --muted: #9aa7bf;      /* Soft Grey-Blue */
+    --accent-glow: rgba(124, 92, 255, 0.15);
+}
+
 .App {
-  text-align: center;
+    background-color: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+    overflow-x: hidden;
+    /* Permanent subtle glow background */
+    background-image: radial-gradient(circle at 15% 20%, var(--accent-glow), transparent 40%);
+}
+h1, h2, h3, p, span, li, a {
+    color: var(--text);
+    text-decoration: none;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.desktopMenuListItem {
+    color: var(--text-color) !important;
+}
+.main-content {
+    /* Adds consistent spacing between your Intro, Skills, Works, etc. */
+    display: flex;
+    flex-direction: column;
+    gap: 10rem; /* Large gap for premium 'breathing room' */
+    padding-bottom: 5rem;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
 
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
+/* Global Smooth Scroll */
 html {
-  scroll-behavior: smooth;
+    scroll-behavior: smooth;
+    scrollbar-width: thin;
+    scrollbar-color: var(--accent) var(--bg-color);
 }
 
+/* Custom Scrollbar for Chrome/Safari */
+::-webkit-scrollbar {
+    width: 8px;
+}
+::-webkit-scrollbar-track {
+    background: var(--bg-color);
+}
+::-webkit-scrollbar-thumb {
+    background: var(--accent);
+    border-radius: 10px;
+}
+
+/* Create a standard container for all sections */
+section {
+    padding: 5rem 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}

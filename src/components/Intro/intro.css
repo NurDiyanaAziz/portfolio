@@ -1,151 +1,163 @@
-#intro {
-    height: calc(100vh - 4rem);
-    width: 120vw;
-    max-width: 90rem;
-    margin: 0 auto;
-    overflow: hidden;
-    position: sticky;
+/* Update your :root in a global CSS file or intro.css */
+:root {
+    --bg: #030712; /* Darker, richer black-navy */
+    --card: rgba(17, 24, 39, 0.7); /* Translucent glass effect */
+    --border: rgba(255, 255, 255, 0.08);
+    --accent: #7c5cff;
+    --accent-glow: rgba(124, 92, 255, 0.3);
+    --text-main: #f3f4f6;
+    --text-muted: #9ca3af;
 }
 
-.bg {
+#intro {
+    flex-direction: row;
+    justify-content: space-between;
+    padding-top: 100px; /* Accounts for fixed navbar */
+    min-height: 85vh;   /* Fills most of the screen */
+    gap: 4rem;
+}
+
+/* Subtle glow behind the content to match the contact section */
+#intro::before {
+    content: '';
     position: absolute;
-    top: 1rem;
-    right: 0;
-    z-index: -1;
-    object-fit: cover;
-    height: 90vh;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at 20% 30%, rgba(124, 92, 255, 0.08), transparent 40%);
+    pointer-events: none;
 }
 
 .introContent {
-    height: 100vh;
-    width: 100%;
-    padding: 2rem;
-    font-size: 3rem;
-    font-weight: 700;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+    flex: 1.2;
+    text-align: left;
 }
-
 .hello {
-    font-size: 1.75rem;
-    font-weight: 100;
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: var(--accent);
+    letter-spacing: 1px;
+    text-transform: uppercase;
 }
 
-.introName {
-    color: #6851CB;
+.introText {
+    font-size: clamp(2.5rem, 5vw, 4.5rem);
+    line-height: 1.1;
 }
-
-/* Define the keyframes for the gradient animation */
-@keyframes gradientShift {
-    0% {
-        background-position: 0% 50%;
-    }
-    50% {
-        background-position: 100% 50%;
-    }
-    100% {
-        background-position: 0% 50%;
-    }
-}
-
-/* Apply the gradient animation to the text element */
 .gradient-text {
-    font-weight: bold;
-    background: linear-gradient(45deg, #961d77, #c328d8, #b47dc5, #6851CB);
-    background-size: 300% 300%;
+    background: linear-gradient(90deg, var(--accent), #a68bff);
+    -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
-    animation: gradientShift 5s infinite;
+    display: inline-block;
 }
 
 .introPara {
-    font-size: medium;
-    font-weight: 300;
-    letter-spacing: 1px;
+    color: var(--muted);
+    font-size: 1.1rem;
+    line-height: 1.6;
+    max-width: 480px;
+    /* This adds the gap you want */
+    margin-bottom: 2.5rem; 
+}
+
+/* Button Grouping */
+.btnGroup {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
 }
 
 .btn {
-    text-align: center;
-    background: #6851CB;
-    margin: 1rem 0;
-    padding: 0.7rem 2rem;
-    border: none;
-    border-radius: 2rem;
+    background: linear-gradient(90deg, var(--accent), #a68bff);
     color: white;
+    padding: 0.9rem 2.2rem;
+    border-radius: 10px;
+    border: none;
+    font-weight: 600;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: transform .12s ease, box-shadow .12s ease;
+    box-shadow: 0 4px 15px rgba(124, 92, 255, 0.2);
 }
 
 .btn:hover {
-    background: #9681f7;
-    cursor: pointer;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 30px rgba(124, 92, 255, 0.3);
 }
 
-.btnImg {
-    object-fit: cover;
-    margin: 1 0.5rem;
-    height: 1.7rem;
+.socialLinks {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    margin-top: 0.5rem;
 }
 
-.btn1 {
-    margin: 1rem 0;
-    padding: 0.75rem 2.5rem 0.75rem 1.2rem;
-    border: none;
+.socialIcon {
+    height: 1.8rem; /* Standard desktop size */
+    width: auto;
+    transition: all 0.3s ease;
+    opacity: 0.8;
 }
 
-.btnImg1 {
-    margin: 0 0.25rem;
-    height: 1rem;
-    transform: scale(5);
+.socialIcon:hover {
+    opacity: 1;
+    transform: scale(1.1);
+    filter: drop-shadow(0 0 8px var(--accent));
 }
 
-.btnImg1:hover {
-    cursor: pointer;
-    filter: drop-shadow(2px 2px 2px #9681f7);
+/* Image Styling */
+.imageContainer {
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
+    z-index: 1;
+}
+
+.bg {
+    flex: 1;
+    max-width: 450px;
+    filter: drop-shadow(0 0 30px var(--accent-glow)); /* Permanent glow on your photo */
+}
+
+/* Responsive Fixes */
+@media screen and (max-width: 992px) {
+    .bg { max-width: 350px; }
 }
 
 @media screen and (max-width: 768px) {
-    .bg {
-        right: -20vw;
-        height: 60%;
-        width: auto; /* Ensure image responsiveness */
-        max-width: 100%; /* Ensure image doesn't exceed container */
+    #intro {
+        flex-direction: column-reverse; /* Stacks image on top of text for mobile */
+        text-align: center;
     }
-
     .introContent {
-        font-size: 7vw;
+        align-items: center;
     }
 
-    .hello {
-        font-size: 4.5vw;
+    .btnGroup {
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+
+    .bg {
+        max-width: 280px;
+    }
+
+    .introText {
+        font-size: 2.8rem;
     }
 }
-
+/* Mobile Specific Upgrade */
 @media screen and (max-width: 480px) {
-    #intro {
-        overflow: hidden;
-    width: auto;
-    max-width: 75rem;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    text-align: left;
-    margin: 0 auto;
-    
+    .socialLinks {
+        gap: 2rem; /* More space for thumbs to click */
+        margin-top: 1.5rem;
+        justify-content: center; /* Center them if your mobile layout is centered */
     }
 
-    .bg {
-        display: none;
-        right:16%;
-        height: 80%; /* Adjust height as needed for mobile */
-        width: 100%; /* Ensure image responsiveness */
-        max-width: 75rem ; /* Ensure image doesn't exceed container */
-    }
-
-    .introContent {
-        font-size: 8vw;
-    }
-
-    .hello {
-        font-size: 5vw;
+    .socialIcon {
+        height: 2.5rem; /* Bigger size for mobile touch */
+        opacity: 1; /* Keep them bright on mobile */
     }
 }

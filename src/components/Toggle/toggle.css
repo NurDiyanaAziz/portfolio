@@ -1,20 +1,38 @@
-.toggle{
+.toggle-container {
     display: flex;
-    justify-content:space-between;
-    border: 3px solid #6851CB;
-    border-radius: 1rem;
+    justify-content: space-between;
+    align-items: center;
+    width: 54px; /* Slightly wider for better spacing */
+    height: 28px;
+    border: 2px solid var(--accent);
+    border-radius: 50px;
     position: relative;
-    padding: 2px;
+    padding: 0 6px;
     cursor: pointer;
+    background: var(--card-bg); /* Use the card-bg variable we set in App.css */
+    transition: background 0.5s ease, border 0.5s ease;
+}
 
+.t-icon {
+    font-size: 0.85rem;
+    z-index: 1;
+    transition: color 0.4s ease;
 }
-.toggle>*{
-    width: 1rem;
-    height: 1rem;
-    color: white;
-}
-.t-button{
-    border-radius: 100%;
-    background: #6851CB;
+
+/* Logic for Icon Colors in different modes */
+.toggle-container.dark .moon { color: #f1c40f; } /* Yellow Moon */
+.toggle-container.dark .sun { color: #4b5563; }  /* Dim Sun */
+
+.toggle-container.light .sun { color: #f39c12; }  /* Orange Sun */
+.toggle-container.light .moon { color: #94a3b8; } /* Dim Moon */
+
+.t-button {
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background: var(--accent);
     position: absolute;
+    top: 1px; /* Center it vertically */
+    transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55); /* Bouncy move */
+    box-shadow: 0 0 10px var(--accent-glow);
 }

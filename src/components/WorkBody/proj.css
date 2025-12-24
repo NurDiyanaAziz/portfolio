@@ -1,112 +1,400 @@
-/* src/App.css */
+:root {
+    --bg: #0f1724;
+    --card: #0b1220;
+    --muted: #9aa7bf;
+    --accent: #7c5cff;
+    --accent-2: #00c68a;
+}
+
+/* Slick Slider Customization */
 .slick-prev:before,
 .slick-next:before {
-  color: black;  /* Change arrow color */
+    color: var(--accent) !important; /* Arrows now match your theme */
+    font-size: 25px;
 }
 
 .slick-dots li button:before {
-  color: black;  /* Change dot color */
+    color: var(--muted) !important; /* Dots color */
 }
 
-.slick-slide img {
-    
-  display: block;
-  margin: auto;
-  max-height: 500px;  /* Adjust image height */
-  width: auto;
+.slick-dots li.slick-active button:before {
+    color: var(--accent) !important; /* Active dot color */
 }
 
-.sect{
-    display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
+.slick-slider {
+    max-height: 550px;
+    overflow: hidden;
 }
 
-.img1{
-    max-width: 100%;
-    height: auto;
-    object-fit: contain;
-    pointer-events: none;
+/* Section Layout */
+.sect {
+    background: var(--card);
+    backdrop-filter: blur(12px); /* Frosted glass effect */
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid var(--border);
+    border-radius: 24px;
+    padding: 4rem;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
 }
-.imgslide{
-    
-    width: 50%;
+
+/* Subtle glow effect behind the card on hover */
+.sect:hover {
+    border-color: var(--accent);
+    box-shadow: 0 0 40px var(--accent-glow);
+    transform: translateY(-5px);
 }
+
+/* Upgrade the Tech Tags (list1) */
+.list1 li {
+    background: rgba(124, 92, 255, 0.1);
+    color: var(--accent);
+    padding: 6px 14px;
+    border-radius: 100px; /* Capsule shape */
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    border: 1px solid rgba(124, 92, 255, 0.2);
+    transition: 0.3s;
+}
+
+.list1 li:hover {
+    background: var(--accent);
+    color: white;
+}
+
 .textdesc {
-    flex: 1 1 40%; /* Adjust as needed */
+    flex: 1.2; 
     display: flex;
     flex-direction: column;
     justify-content: center;
-    padding: 5px;
-    text-align: justify;
-            
-  }
-
-.textTitle{
-    
-    padding-bottom: 15px;
-}
-.text{
-    padding-bottom: 2%;
-    padding-right:5% ;
 }
 
-.textImage{
-    padding-bottom: 15px;
+.textTitle {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 1rem;
 }
-@media screen and (max-width:480px) {
 
-  .sect{
+.text {
+    color: var(--muted);
+    font-size: 1rem;
+    line-height: 1.6;
+    margin-bottom: 1.2rem;
+    display: block;
+}
+
+.list1 {
+    list-style: none;
+    padding: 0;
     display: flex;
-  flex-wrap: wrap;
-  gap: 100%;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 10px;
 }
-.imgslide{
+
+.list1 li {
+    background: rgba(124, 92, 255, 0.1);
+    color: var(--accent);
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    border: 1px solid rgba(124, 92, 255, 0.2);
+}
+
+/* Slider Area */
+.imgslide {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.phone-case {
+    width: 250px;
+    height: 500px;
+    background: #111;
+    border: 6px solid #333; /* Phone bezel */
+    border-radius: 30px;
+    overflow: hidden;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+}
+
+.display-img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    transition: opacity 0.3s ease;
+}
+
+/* Thumbnail Row */
+/* Change the old thumb-row to this new thumb-grid */
+.thumb-grid {
+    display: grid;
+    /* This creates a grid with 4 columns. It will automatically create a 2nd row if you have more than 4 images */
+    grid-template-columns: repeat(4, 1fr); 
+    gap: 12px;
+    justify-items: center;
+    margin-top: 10px;
+}
+
+.thumb-box {
+    width: 55px; /* Slightly bigger icons since they are in a grid */
+    height: 55px;
+    border-radius: 8px;
+    overflow: hidden;
+    cursor: pointer;
+    border: 2px solid transparent;
+    opacity: 0.6;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.thumb-box.active {
+    opacity: 1;
+    border-color: var(--accent);
+    transform: scale(1.1); /* Pop out effect */
+    box-shadow: 0 0 15px var(--accent-glow);
+}
+
+/* For very small screens, make it 3 columns so it doesn't get squeezed */
+@media (max-width: 480px) {
+    .thumb-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+.thumb-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.textImage {
+    font-weight: 600;
+    color: var(--accent-2); /* Teal for a nice contrast */
+    margin-bottom: 15px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 0.8rem;
+}
+
+.img1 {
+    width: auto;
+    max-height: 480px; /* Limits the vertical 'Long' look */
+    object-fit: contain;
+    border-radius: 20px; /* Rounded corners like a real phone */
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4); /* Premium shadow */
+    transition: transform 0.3s ease;
+}
+.img1:hover {
+    transform: scale(1.02);
+}
+
+/* Mobile Responsiveness */
+@media screen and (max-width: 880px) {
+    .sect {
+        flex-direction: column;
+        padding: 2rem;
+        gap: 2rem;
+    }
+
+    .imgslide {
+        width: 100%;
+    }
+
+    .textTitle {
+        font-size: 1.5rem;
+    }
+}
+
+/* Swaps the order for even-numbered projects or specific 'reversed' class */
+.sect.reversed {
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    justify-content: center; /* Centers the whole group */
+    gap: 6rem; /* Increased gap for a more 'premium' airy feel */
+    margin: 4rem auto;
+    max-width: 1000px; /* Pulls the content tighter toward the center */
+}
+
+/* Ensure that on mobile, it still stacks correctly (Text then Image) */
+@media screen and (max-width: 880px) {
+    .sect.reversed {
+        flex-direction: column;
+        gap: 2rem;
+        text-align: center;
+    }
+    .sect {
+        flex-direction: column; /* Stacks them only on small screens */
+        text-align: center;
+        gap: 2rem;
+    }
     
-  width: 100%;
-  padding-bottom: 15%;
-}
-  .workDesc{
-      font-weight: 400;
-      font-size: 1rem;
-   
-      padding: 0 2rem;
-      text-align: justify;
-      
-      
-  }
-  .worksBar{
-      height: 100%;
-      width: 100%;
-      display:block;
-      margin: 1rem;
-      padding: 1.5rem 2rem;
-     
-      border-radius: 0.5rem;
-      background: #6851CB;
-      padding-bottom: 5%;
-  }
-
-  .textTitle{
-    
-    padding-bottom: 15px;
-    font-size: medium;
-}
-.text{
-    padding-bottom: 2%;
-    padding-right:3% ;
-    font-size: small;
-}
-.list1{
-  font-size: smaller;
-  font-weight: 400;
+    .img1 {
+        max-height: 400px; /* Even smaller for mobile devices */
+    }
 }
 
-.slick-dots{
-
-  height: 2rem;
-  
+.slide-item {
+    outline: none; /* Removes the blue box when clicking the slider */
 }
-  
 
+/* Add/Update these specific classes in proj.css */
+
+.imgslide.web-version {
+    flex: 1.5; /* Give more width to web screenshots */
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 10px; /* Slimmer padding for wide images */
+}
+
+.img1.web-img {
+    max-height: unset; /* Remove the mobile height limit */
+    width: 100%;       /* Stretch to fill the container width */
+    height: auto;
+    border-radius: 4px; /* Sharper corners look better for web windows */
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+    border: 1px solid #333; /* Simulated browser border */
+}
+
+/* Adjust the reversed layout for web images specifically */
+@media screen and (min-width: 881px) {
+    .sect.reversed {
+        gap: 4rem; /* More space between wide image and text */
+    }
+}
+/* Container for the web image to make it look like a browser window */
+.imgslide.web-version .slick-track {
+    display: flex;
+    align-items: center;
+}
+
+.img1.web-img {
+    width: 100%;
+    max-height: 400px; /* Limits the height of long web pages */
+    object-fit: cover; /* Or 'contain' if you want to see the whole page */
+    object-position: top; /* Shows the top of the website first */
+    border-radius: 8px;
+}
+
+/* Optional: Add a "floating" animation to the web projects to make them look premium */
+.web-version {
+    animation: float 6s ease-in-out infinite;
+}
+
+@keyframes float {
+	0% { transform: translateY(0px); }
+	50% { transform: translateY(-10px); }
+	100% { transform: translateY(0px); }
+}
+
+.browser-header {
+    background: #1f2937;
+    height: 25px;
+    border-radius: 8px 8px 0 0;
+    display: flex;
+    align-items: center;
+    padding-left: 10px;
+    gap: 6px;
+}
+.dot { height: 6px; width: 6px; border-radius: 50%; background: #4b5563; }
+
+.reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.8s ease-out;
+}
+
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Web Specific Browser Case */
+/* Web Specific Browser Case */
+.browser-case {
+    width: 450px; 
+    height: 280px; 
+    background: #111;
+    border: 4px solid #333;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+}
+
+.browser-header {
+    height: 20px;
+    background: #333;
+    display: flex;
+    align-items: center;
+    padding-left: 10px;
+    gap: 5px;
+}
+
+.browser-header .dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #555; /* The 3 dots like a Mac window */
+}
+
+/* Thumbnail Grid - now used by all projects */
+.thumb-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); 
+    gap: 12px;
+    justify-items: center;
+    margin-top: 15px;
+}
+
+/* Ensure images fit the browser well */
+.browser-case .display-img {
+    object-position: top; /* Important for long website screenshots */
+}
+
+/* Mobile responsive for Web project */
+@media (max-width: 480px) {
+    .browser-case {
+        width: 100%;
+        height: 200px;
+    }
+    .thumb-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+/* Ensure images fit the browser well */
+.browser-case .display-img {
+    object-position: top; /* Important for long website screenshots */
+}
+
+/* Mobile responsive for Web project */
+@media (max-width: 480px) {
+    .browser-case {
+        width: 100%;
+        height: 200px;
+    }
+}
+
+.display-img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    /* Add this for a smooth fade when the 'src' changes */
+    animation: simpleFade 0.4s ease-in-out;
+}
+
+@keyframes simpleFade {
+    from {
+        opacity: 0.4;
+        filter: blur(5px);
+    }
+    to {
+        opacity: 1;
+        filter: blur(0);
+    }
 }

@@ -6,21 +6,19 @@ import Contact from "./components/Contact/contact";
 import Footer from "./components/Footer/footer";
 import { useContext } from "react";
 import { themeContext } from "./Context";
+import "./App.css"; // Ensure App.css is imported
 
 function App() {
-  const theme = useContext(themeContext);
-  const darkMode = theme.state.darkMode;
   return (
-    <div className="App"
-    style={{
-      background: darkMode ? "black" : "",
-      color: darkMode ? "white" : "",
-    }}>
+    // Remove the condition and just use a single class "App dark-theme"
+    <div className="App dark-theme">
         <Navbar/>
-        <Intro/>
-        <Skills/>
-        <Works/>
-        <Contact/>
+        <main className="main-content">
+            <Intro/>
+            <Skills/>
+            <Works/>
+            <Contact/>
+        </main>
         <Footer/>
     </div>
   );

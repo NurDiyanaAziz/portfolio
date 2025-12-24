@@ -1,49 +1,54 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './navbar.css';
 import logo from '../../assets/D.png';
-import contactImg from '../../assets/contact.png';
 import { Link } from 'react-scroll';
-import Toggle from "../Toggle/toggle";
 
 const Navbar = () => {
     const [menuOpen, setMenuOpen] = useState(false);
+    const [scrolled, setScrolled] = useState(false);
 
-    const toggleMenu = () => {
-        setMenuOpen(!menuOpen);
-    };
-
-    const closeMenu = () => {
-        setMenuOpen(false);
-    };
+    // Adds a background when scrolling down
+    useEffect(() => {
+        const handleScroll = () => {
+            setScrolled(window.scrollY > 50);
+        };
+        window.addEventListener('scroll', handleScroll);
+        return () => window.removeEventListener('scroll', handleScroll);
+    }, []);
 
     return (
-        <nav className="navbar">
+        <nav className={`navbar ${scrolled ? 'scrolled' : ''}`}>
             <div className="logoleft">
-                <Link  to="intro" spy={true} smooth={true} offset={-199} duration={500} onClick={closeMenu}>
+                <Link to="intro" spy={true} smooth={true} offset={-100} duration={500} onClick={() => setMenuOpen(false)}>
                     <img src={logo} alt="Logo" className='logo' />
                 </Link>
-                <Toggle />
+               
             </div>
 
             <div className={`desktopMenu ${menuOpen ? 'open' : ''}`}>
-                <Link to="intro" spy={true} smooth={true} offset={-199} duration={500} className='desktopMenuListItem' onClick={closeMenu}>
-                    Home
-                </Link>
-                <Link to="skills" spy={true} smooth={true} offset={-90} duration={500} className='desktopMenuListItem' onClick={closeMenu}>
+                <Link activeClass="active" to="intro" spy={true} smooth={true} offset={-100} duration={500} className='desktopMenuListItem' onClick={() => setMenuOpen(false)}>Home</Link>
+                <Link 
+                    activeClass="active" 
+                    to="skills" 
+                    spy={true} 
+                    smooth={true} 
+                    offset={-80} // This accounts for the navbar height
+                    duration={500} 
+                    className='desktopMenuListItem'
+                >
                     About
                 </Link>
-                <Link to="works" spy={true} smooth={true} offset={-90} duration={500} className='desktopMenuListItem' onClick={closeMenu}>
-                    Portfolio
-                </Link>
-                <Link to="contact" spy={true} smooth={true} offset={-90} duration={500} className='desktopMenuListItem' onClick={closeMenu}>
-                    <button className='desktopMenuBtn'>
-                        <img src={contactImg} alt='Contact' className='desktopMenuImg'/> Contact Me
-                    </button>
-                </Link>
+                <Link activeClass="active" to="works" spy={true} smooth={true} offset={-70} duration={500} className='desktopMenuListItem' onClick={() => setMenuOpen(false)}>Portfolio</Link>
             </div>
 
-            <div className="menuButton" onClick={toggleMenu}>
-                &#9776;
+            <button className="contactBtn" onClick={() => document.getElementById('contact').scrollIntoView({behavior: 'smooth'})}>
+                Contact Me
+            </button>
+
+            <div className={`hamburger ${menuOpen ? 'active' : ''}`} onClick={() => setMenuOpen(!menuOpen)}>
+                <span className="bar"></span>
+                <span className="bar"></span>
+                <span className="bar"></span>
             </div>
         </nav>
     );

@@ -1,5 +1,15 @@
 {
   "projects": {
     "default": "yanaazizdev"
-  }
+  },
+  "targets": {
+    "yanaazizdev": {
+      "hosting": {
+        "portfolio": [
+          "yanaazizdev"
+        ]
+      }
+    }
+  },
+  "etags": {}
 }

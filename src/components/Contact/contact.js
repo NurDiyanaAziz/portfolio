@@ -1,6 +1,5 @@
-import React, { useRef} from "react";
+import React, { useRef } from "react";
 import emailjs from "@emailjs/browser";
-import styled from "styled-components";
 import './contact.css';
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -11,8 +10,27 @@ const Contact = () => {
   
   const form = useRef();
 
+  const validate = (name, email, message) => {
+    if (!name.trim() || !email.trim() || !message.trim()) {
+      toast.error("Please fill out all fields");
+      return false;
+    }
+    const re = /\S+@\S+\.\S+/;
+    if (!re.test(email)) {
+      toast.error("Please enter a valid email");
+      return false;
+    }
+    return true;
+  };
+
   const sendEmail = (e) => {
     e.preventDefault();
+    const data = new FormData(form.current);
+    const name = data.get("user_name") || "";
+    const email = data.get("user_email") || "";
+    const message = data.get("message") || "";
+
+    if (!validate(name, email, message)) return;
 
     emailjs
       .sendForm(
@@ -23,100 +41,49 @@ const Contact = () => {
       )
       .then(
         (result) => {
-          console.log(result.text);
-          console.log("message sent");
           e.target.reset();
-          
-          toast.success("Hey! Thank you for contacting me");
+          toast.success("Thanks — message sent!");
         },
         (error) => {
-          console.log(error.text);
+          console.error(error.text);
+          toast.error("Failed to send message. Try again later.");
         }
       );
   };
 
   return (
-    <section id='contact'>
-      
-      <div className="contactBars">
-        
-    <div className="contactBox">
-    <span className="title">Get in Touch</span>
-<StyledContactForm>
-      <form ref={form} onSubmit={sendEmail}>
-        <label>Name</label>
-        <input type="text" name="user_name" />
-        <label>Email</label>
-        <input type="email" name="user_email" />
-        <label>Message</label>
-        <textarea name="message" />
-        <input type="submit" value="Send" />
-      </form>
+    <section id="contact" className="contact-section">
+      <div className="contact-container">
+        <div className="contact-card">
+          <div className="contact-left">
+            <h2 className="contact-heading">Let’s build something great</h2>
+            <p className="contact-sub">I’m open to freelance work and collaborations. Drop a message and I’ll respond within 48 hours.</p>
+            <ul className="contact-meta">
+              <li><strong>Email:</strong> <a href="mailto:nurdiyanaabaziz26@gmail.com">nurdiyanaabaziz26@gmail.com</a></li>
+              <li><strong>Location:</strong> Kuala Lumpur, Malaysia</li>
+            </ul>
+          </div>
+
+          <div className="contact-right">
+            <form ref={form} onSubmit={sendEmail} className="contact-form" noValidate>
+              <label htmlFor="name">Name</label>
+              <input id="name" name="user_name" type="text" placeholder="Your full name" required />
+
+              <label htmlFor="email">Email</label>
+              <input id="email" name="user_email" type="email" placeholder="Your email" required />
+
+              <label htmlFor="message">Message</label>
+              <textarea id="message" name="message" placeholder="Briefly describe your project..." required></textarea>
+
+              <button type="submit" className="btn-primary">Send message</button>
+            </form>
+          </div>
+        </div>
+      </div>
       <ToastContainer position="top-right" />
-    </StyledContactForm>
-    </div>
-    </div>
     </section>
     
   );
 };
 
 export default Contact;
-
-// Styles
-const StyledContactForm = styled.div`
-  width: 400px;
-
-  form {
-    display: flex;
-    align-items: flex-start;
-    flex-direction: column;
-    width: 100%;
-    font-size: 16px;
-
-    input {
-      width: 100%;
-      height: 35px;
-      padding: 7px;
-      outline: none;
-      border-radius: 5px;
-      border: 1px solid rgb(220, 220, 220);
-
-      &:focus {
-        border: 2px solid rgba(0, 206, 158, 1);
-      }
-    }
-
-    textarea {
-      max-width: 100%;
-      min-width: 100%;
-      width: 100%;
-      max-height: 100px;
-      min-height: 100px;
-      padding: 7px;
-      outline: none;
-      border-radius: 5px;
-      border: 1px solid rgb(220, 220, 220);
-
-      &:focus {
-        border: 2px solid rgba(0, 206, 158, 1);
-      }
-    }
-
-    label {
-      margin-top: 1rem;
-    }
-
-    input[type="submit"] {
-      margin-top: 2rem;
-      cursor: pointer;
-      background: white;
-      
-      border: none;
-    }
-      input:hover{
-      background: #9681f7;
-
-      }
-  }
-`;

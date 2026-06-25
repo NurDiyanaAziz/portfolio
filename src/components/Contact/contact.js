@@ -60,7 +60,7 @@ const Contact = () => {
             <p className="contact-sub">I’m open to freelance work and collaborations. Drop a message and I’ll respond within 48 hours.</p>
             <ul className="contact-meta">
               <li><strong>Email:</strong> <a href="mailto:nurdiyanaabaziz26@gmail.com">nurdiyanaabaziz26@gmail.com</a></li>
-              <li><strong>Location:</strong> Kuala Lumpur, Malaysia</li>
+              <li><strong>Location:</strong> Melaka, Malaysia</li>
             </ul>
           </div>
 

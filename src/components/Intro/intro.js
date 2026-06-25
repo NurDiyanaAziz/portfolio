@@ -3,7 +3,7 @@ import './intro.css';
 import bg from '../../assets/profile5.png';
 import Github from '../../assets/github.png';
 import Linkedin from '../../assets/linkedin.png';
-import Resume from '../../assets/src/assets/RESUME-NUR_DIYANA_AB_AZIZ.pdf';
+import Resume from '../../assets/RESUME-NUR_DIYANA_AB_AZIZ.pdf';
 
 const Intro = () => {
     return (
